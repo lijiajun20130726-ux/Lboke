@@ -14,7 +14,9 @@ const router = createRouter({
         { path: 'tag/:name', name: 'Tag', component: () => import('@/views/front/Tag.vue') },
         { path: 'archives', name: 'Archives', component: () => import('@/views/front/Archives.vue') },
         { path: 'about', name: 'About', component: () => import('@/views/front/About.vue') },
-        { path: 'search', name: 'Search', component: () => import('@/views/front/Search.vue') }
+        { path: 'search', name: 'Search', component: () => import('@/views/front/Search.vue') },
+        { path: 'login', name: 'UserLogin', component: () => import('@/views/front/Login.vue') },
+        { path: 'register', name: 'UserRegister', component: () => import('@/views/front/Register.vue') }
       ]
     },
     // 后台路由
@@ -35,6 +37,7 @@ const router = createRouter({
         { path: 'article/edit/:id', name: 'EditArticle', component: () => import('@/views/admin/ArticleEdit.vue') },
         { path: 'categories', name: 'Categories', component: () => import('@/views/admin/Categories.vue') },
         { path: 'tags', name: 'Tags', component: () => import('@/views/admin/Tags.vue') },
+        { path: 'users', name: 'Users', component: () => import('@/views/admin/Users.vue') },
         { path: 'settings', name: 'Settings', component: () => import('@/views/admin/Settings.vue') }
       ]
     }

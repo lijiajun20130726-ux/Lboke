@@ -1,8 +1,13 @@
 import api from './index'
 
 // 用户登录
-export const login = (data: { username: string; password: string }) => {
+export const login = (data: { account: string; password: string }) => {
   return api.post('/user/login', data)
+}
+
+// 获取用户列表（管理员）
+export const getUserList = (params?: any) => {
+  return api.get('/user/list', { params })
 }
 
 // 用户注册

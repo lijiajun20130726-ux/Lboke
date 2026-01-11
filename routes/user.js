@@ -10,11 +10,11 @@ const ResponseHelper = require('../utils/response');
 const registerValidation = [
     body('username').trim().isLength({ min: 3, max: 50 }).withMessage('用户名长度应为3-50个字符'),
     body('password').isLength({ min: 6 }).withMessage('密码长度至少6个字符'),
-    body('email').optional().isEmail().withMessage('邮箱格式不正确')
+    body('email').isEmail().withMessage('邮箱格式不正确')
 ];
 
 const loginValidation = [
-    body('username').trim().notEmpty().withMessage('用户名不能为空'),
+    body('account').trim().notEmpty().withMessage('用户名或邮箱不能为空'),
     body('password').notEmpty().withMessage('密码不能为空')
 ];
 
@@ -56,10 +56,18 @@ router.post('/register', registerValidation, async (req, res) => {
         // 创建用户
         const [result] = await pool.query(
             'INSERT INTO users (username, password, email, nickname, role) VALUES (?, ?, ?, ?, ?)',
-            [username, hashedPassword, email || null, nickname || username, 'user']
+            [username, hashedPassword, email, nickname || username, 'user']
         );
 
-        ResponseHelper.created(res, { userId: result.insertId }, '注册成功');
+        const userId = result.insertId;
+
+        // 创建用户基本资料
+        await pool.query(
+            'INSERT INTO user_profiles (user_id) VALUES (?)',
+            [userId]
+        );
+
+        ResponseHelper.created(res, { userId }, '注册成功');
     } catch (error) {
         ResponseHelper.serverError(res, error);
     }
@@ -74,16 +82,16 @@ router.post('/login', loginValidation, async (req, res) => {
             return ResponseHelper.error(res, errors.array()[0].msg);
         }
 
-        const { username, password } = req.body;
+        const { account, password } = req.body;
 
-        // 查询用户
+        // 查询用户 (支持用户名或邮箱)
         const [users] = await pool.query(
-            'SELECT id, username, password, email, nickname, avatar, role, status FROM users WHERE username = ?',
-            [username]
+            'SELECT id, username, password, email, nickname, avatar, role, status FROM users WHERE username = ? OR email = ?',
+            [account, account]
         );
 
         if (users.length === 0) {
-            return ResponseHelper.error(res, '用户名或密码错误');
+            return ResponseHelper.error(res, '用户名/邮箱或密码错误');
         }
 
         const user = users[0];

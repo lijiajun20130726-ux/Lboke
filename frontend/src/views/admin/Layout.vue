@@ -7,6 +7,7 @@
         <router-link to="/admin/articles">📝 文章管理</router-link>
         <router-link to="/admin/categories">📁 分类管理</router-link>
         <router-link to="/admin/tags">🏷️ 标签管理</router-link>
+        <router-link to="/admin/users">👥 用户管理</router-link>
         <router-link to="/admin/settings">⚙️ 网站设置</router-link>
       </nav>
       <div class="user-info">

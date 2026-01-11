@@ -15,9 +15,9 @@ export const useUserStore = defineStore('user', () => {
   const token = ref(localStorage.getItem('token') || '')
   const user = ref<User | null>(JSON.parse(localStorage.getItem('user') || 'null'))
 
-  const login = async (username: string, password: string) => {
+  const login = async (account: string, password: string) => {
     try {
-      const res: any = await loginApi({ username, password })
+      const res: any = await loginApi({ account, password })
       console.log('API response:', res)
       if (res.code === 200) {
         token.value = res.data.token

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { pool } = require('../config/database');
-const { optionalAuthMiddleware } = require('../middleware/auth');
+const { authMiddleware, optionalAuthMiddleware, adminMiddleware } = require('../middleware/auth');
 const ResponseHelper = require('../utils/response');
 
 // 获取首页文章列表（已发布）
@@ -154,16 +154,46 @@ router.get('/articles/:id', optionalAuthMiddleware, async (req, res) => {
 });
 
 // 文章点赞
-router.post('/articles/:id/like', async (req, res) => {
+router.post('/articles/:id/like', authMiddleware, async (req, res) => {
     try {
         const { id } = req.params;
+        const userId = req.user.id;
 
-        await pool.query(
-            'UPDATE articles SET like_count = like_count + 1 WHERE id = ? AND status = ?',
-            [id, 'published']
+        // 检查是否已经点过赞
+        const [existingLikes] = await pool.query(
+            'SELECT id FROM article_likes WHERE article_id = ? AND user_id = ?',
+            [id, userId]
         );
 
-        ResponseHelper.success(res, null, '点赞成功');
+        if (existingLikes.length > 0) {
+            return ResponseHelper.error(res, '您已经点过赞了', 400);
+        }
+
+        // 开启事务
+        const connection = await pool.getConnection();
+        try {
+            await connection.beginTransaction();
+
+            // 插入点赞记录
+            await connection.query(
+                'INSERT INTO article_likes (article_id, user_id) VALUES (?, ?)',
+                [id, userId]
+            );
+
+            // 更新文章点赞数
+            await connection.query(
+                'UPDATE articles SET like_count = like_count + 1 WHERE id = ? AND status = ?',
+                [id, 'published']
+            );
+
+            await connection.commit();
+            ResponseHelper.success(res, null, '点赞成功');
+        } catch (error) {
+            await connection.rollback();
+            throw error;
+        } finally {
+            connection.release();
+        }
     } catch (error) {
         ResponseHelper.serverError(res, error);
     }
@@ -265,8 +295,6 @@ router.get('/site-info', async (req, res) => {
 });
 
 // 更新网站配置（管理员）
-const { authMiddleware, adminMiddleware } = require('../middleware/auth');
-
 router.put('/site-info', authMiddleware, adminMiddleware, async (req, res) => {
     try {
         const configs = req.body;

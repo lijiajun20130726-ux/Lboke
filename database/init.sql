@@ -60,6 +60,35 @@ CREATE TABLE IF NOT EXISTS articles (
     FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Articles table';
 
+-- Comments table
+CREATE TABLE IF NOT EXISTS comments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    article_id INT NOT NULL,
+    user_id INT,
+    nickname VARCHAR(50),
+    email VARCHAR(100),
+    content TEXT NOT NULL,
+    parent_id INT DEFAULT NULL,
+    status TINYINT DEFAULT 1 COMMENT '1-show, 0-hide',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+    FOREIGN KEY (parent_id) REFERENCES comments(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Comments table';
+
+-- User profiles table
+CREATE TABLE IF NOT EXISTS user_profiles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL UNIQUE,
+    real_name VARCHAR(50),
+    gender ENUM('male', 'female', 'other', 'secret') DEFAULT 'secret',
+    birthday DATE,
+    bio TEXT,
+    location VARCHAR(100),
+    website VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='User profiles table';
+
 -- Article-Tags relation table
 CREATE TABLE IF NOT EXISTS article_tags (
     id INT PRIMARY KEY AUTO_INCREMENT,

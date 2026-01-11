@@ -11,6 +11,7 @@ const articleRoutes = require('./routes/article');
 const categoryRoutes = require('./routes/category');
 const tagRoutes = require('./routes/tag');
 const uploadRoutes = require('./routes/upload');
+const commentRoutes = require('./routes/comment');
 const frontendRoutes = require('./routes/frontend');
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/article', articleRoutes);     // 文章管理
 app.use('/api/category', categoryRoutes);   // 分类管理
 app.use('/api/tag', tagRoutes);             // 标签管理
 app.use('/api/upload', uploadRoutes);        // 文件上传
+app.use('/api/comment', commentRoutes);      // 评论管理
 
 // 前台展示接口
 app.use('/api/front', frontendRoutes);      // 前台数据接口
@@ -125,7 +127,7 @@ async function startServer() {
 
     const server = app.listen(PORT, () => {
         console.log(`\n========================================`);
-        console.log(`博客系统后端服务已启动`);
+        console.log(`李嘉骏博客系统后端服务已启动`);
         console.log(`服务地址: http://localhost:${PORT}`);
         console.log(`API文档: http://localhost:${PORT}/api`);
         console.log(`========================================\n`);
