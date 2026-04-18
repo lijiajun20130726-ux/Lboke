@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const resolvedBaseUrl = import.meta.env.VITE_API_BASE_URL || '/api'
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: resolvedBaseUrl,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
@@ -31,7 +33,8 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
-      window.location.href = '/admin/login'
+      const isAdminPath = window.location.pathname.startsWith('/admin')
+      window.location.href = isAdminPath ? '/admin/login' : '/login'
     }
     return Promise.reject(error.response?.data || error)
   }

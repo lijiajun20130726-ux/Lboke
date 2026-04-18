@@ -1,21 +1,48 @@
-# 依赖目录
+# Dependencies
 node_modules/
+*/node_modules/
 
-# 环境配置
+# Environment files (contain secrets)
 .env
+.env.*
+!.env.example
 
-# 上传文件
-uploads/*
-!uploads/.gitkeep
-
-# 日志
+# Logs
 *.log
 logs/
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# 系统文件
+# System files
 .DS_Store
 Thumbs.db
+
+# AI tool configs (not needed for the project)
+.agent/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.github/
+.kiro/
+.roo/
+.shared/
+.trae/
+.windsurf/
+
+# Compressed files
+*.rar
+*.zip
+*.7z
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Build outputs
+dist/
+build/

@@ -6,18 +6,20 @@ export const getArticles = (params?: {
   pageSize?: number
   category_id?: number
   tag?: string
+  keyword?: string
+  order?: 'asc' | 'desc'
 }) => {
   return api.get('/front/articles', { params })
 }
 
 // 获取文章详情
-export const getArticleDetail = (id: number) => {
+export const getArticleDetail = (id: number | string) => {
   return api.get(`/front/articles/${id}`)
 }
 
 // 文章点赞
-export const likeArticle = (id: number) => {
-  return api.post(`/front/articles/${id}/like`)
+export const likeArticle = (id: number | string, action?: 'like' | 'unlike') => {
+  return api.post(`/front/articles/${id}/like`, action ? { action } : undefined)
 }
 
 // 搜索文章
@@ -72,4 +74,21 @@ export const getTags = (withCount?: boolean) => {
 // 更新网站配置
 export const updateSiteInfo = (data: any) => {
   return api.put('/front/site-info', data)
+}
+
+// 获取友链列表（前台）
+export const getFriendLinksPublic = () => {
+  return api.get('/front/friend-links')
+}
+
+export const applyFriendLink = (data: { name: string; url: string; logo?: string; description?: string }) => {
+  return api.post('/friendlink/apply', data)
+}
+
+export const getMessageBoardPublic = (limit?: number) => {
+  return api.get('/message/public', { params: { limit } })
+}
+
+export const sendMessageBoard = (data: { nickname: string; content: string; color?: string }) => {
+  return api.post('/message/send', data)
 }
