@@ -1,5 +1,3 @@
-# Lboke - 全栈博客系统
-
 <br />
 <div align="center">
 
