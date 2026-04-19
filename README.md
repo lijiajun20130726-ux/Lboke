@@ -1,6 +1,44 @@
 # Lboke - 全栈博客系统
 
-简洁优雅的个人博客系统，基于 Vue 3 + Express + MySQL 构建。
+<div align="center">
+
+[![Vue][vue-badge]][vue-url]
+[![TypeScript][typescript-badge]][typescript-url]
+[![Node.js][nodejs-badge]][nodejs-url]
+[![MySQL][mysql-badge]][mysql-url]
+[![Express][express-badge]][express-url]
+
+<img src="frontend/public/favicon.jpg" alt="Logo" width="128" height="128" style="border-radius: 20px;">
+
+<p>
+<h3>简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客</h3>
+<br />
+<a href="https://github.com/lijiajun20130726-ux/Lboke"><strong>访问 GitHub »</strong></a>
+<br />
+<br />
+<a href="https://github.com/lijiajun20130726-ux/Lboke/issues">报告 Bug</a>
+·
+<a href="https://github.com/lijiajun20130726-ux/Lboke/issues">功能建议</a>
+</p>
+
+[![Star History][star-history-badge]][star-history-url]
+
+</div>
+
+<details>
+<summary>目录</summary>
+
+- [功能特性](#功能特性)
+- [为什么会有这个项目](#为什么会有这个项目)
+- [快速上手](#快速上手)
+- [项目结构](#项目结构)
+- [技术栈](#技术栈)
+- [架构设计](#架构设计)
+- [常见问题](#常见问题)
+- [贡献指南](#贡献指南)
+- [开源许可](#开源许可)
+
+</details>
 
 ## Star 趋势
 [![Star History Chart](https://api.star-history.com/svg?repos=lijiajun20130726-ux/Lboke&type=Date)](https://www.star-history.com/?repos=lijiajun20130726-ux%2FLboke&type=date&legend=top-left)
