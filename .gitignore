@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment files (contain secrets)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# AI tool configs (not needed for the project)
+.agent/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.github/
+.kiro/
+.roo/
+.shared/
+.trae/
+.windsurf/
+
+# Compressed files
+*.rar
+*.zip
+*.7z
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Build outputs
+dist/
+build/
