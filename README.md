@@ -1,20 +1,44 @@
 # Lboke - 全栈博客系统
 
+<br />
 <div align="center">
 
-[![Vue](https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vue.js&logoColor=white)](https://vuejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
+  <h1 align="center" style="margin-top: 0.2em;">Lboke</h1>
 
-简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客
+  [![Vue][vue-badge]][vue-url]
+  [![TypeScript][typescript-badge]][typescript-url]
+  [![Node.js][nodejs-badge]][nodejs-url]
+  [![MySQL][mysql-badge]][mysql-url]
+  [![Express][express-badge]][express-url]
 
-[访问 GitHub](https://github.com/lijiajun20130726-ux/Lboke) | [报告 Bug](https://github.com/lijiajun20130726-ux/Lboke/issues) | [功能建议](https://github.com/lijiajun20130726-ux/Lboke/issues)
-
+  <p align="center">
+    <h3>简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客</h3>
+    <br />
+    <a href="https://github.com/lijiajun20130726-ux/Lboke"><strong>访问 GitHub &raquo;</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/lijiajun20130726-ux/Lboke/issues">报告 Bug</a>
+    &middot;
+    <a href="https://github.com/lijiajun20130726-ux/Lboke/issues">功能建议</a>
+  </p>
 </div>
 
----
+<br />
+
+<details>
+<summary>目录</summary>
+
+- [功能特性](#功能特性)
+- [为什么会有这个项目](#为什么会有这个项目)
+- [快速上手](#快速上手)
+- [项目结构](#项目结构)
+- [技术栈](#技术栈)
+- [架构设计](#架构设计)
+- [常见问题](#常见问题)
+- [贡献指南](#贡献指南)
+- [开源许可](#开源许可)
+
+</details>
 
 ## 功能特性
 
@@ -195,3 +219,15 @@ A: 生产环境部署建议：
 ---
 
 **Lboke © 2024-2026 由 [Justin的科幻宇宙](https://github.com/lijiajun20130726-ux) 构建**
+
+<!-- Badge Links -->
+[vue-badge]: https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vue.js&logoColor=white
+[vue-url]: https://vuejs.org/
+[typescript-badge]: https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
+[nodejs-badge]: https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white
+[nodejs-url]: https://nodejs.org/
+[mysql-badge]: https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white
+[mysql-url]: https://www.mysql.com/
+[express-badge]: https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white
+[express-url]: https://expressjs.com/
