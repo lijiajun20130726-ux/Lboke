@@ -1,6 +1,8 @@
 <br />
 <div align="center">
 
+  <img src="frontend/public/favicon.jpg" alt="Lboke Logo" width="128" height="128" style="border-radius: 20px;">
+
   <h1 align="center" style="margin-top: 0.2em;">Lboke</h1>
 
   [![Vue][vue-badge]][vue-url]
