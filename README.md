@@ -2,58 +2,38 @@
 
 <div align="center">
 
-[![Vue][vue-badge]][vue-url]
-[![TypeScript][typescript-badge]][typescript-url]
-[![Node.js][nodejs-badge]][nodejs-url]
-[![MySQL][mysql-badge]][mysql-url]
-[![Express][express-badge]][express-url]
+[![Vue](https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
 
-<p>
-<h3>简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客</h3>
-<br />
-<a href="https://github.com/lijiajun20130726-ux/Lboke"><strong>访问 GitHub »</strong></a>
-<br />
-<br />
-<a href="https://github.com/lijiajun20130726-ux/Lboke/issues">报告 Bug</a>
-·
-<a href="https://github.com/lijiajun20130726-ux/Lboke/issues">功能建议</a>
-</p>
+简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客
+
+[访问 GitHub](https://github.com/lijiajun20130726-ux/Lboke) | [报告 Bug](https://github.com/lijiajun20130726-ux/Lboke/issues) | [功能建议](https://github.com/lijiajun20130726-ux/Lboke/issues)
 
 </div>
 
-<details>
-<summary>目录</summary>
-
-- [功能特性](#功能特性)
-- [为什么会有这个项目](#为什么会有这个项目)
-- [快速上手](#快速上手)
-- [项目结构](#项目结构)
-- [技术栈](#技术栈)
-- [架构设计](#架构设计)
-- [常见问题](#常见问题)
-- [贡献指南](#贡献指南)
-- [开源许可](#开源许可)
-
-</details>
+---
 
 ## 功能特性
 
-- **前后台分离** — Vue 3 前端 + Express 后端 API，分层架构清晰
-- **Markdown 编辑** — 支持 Markdown 编写文章，配合实时预览
-- **评论系统** — 支持游客评论和回复，管理员可审核管理
-- **邮件订阅** — 用户可订阅博客更新，新文章发布时自动通知
-- **友链管理** — 开放的友链申请系统，自助提交审核
-- **数据统计** — 管理员后台实时查看网站数据
-- **响应式设计** — 适配各种设备屏幕
-- **JWT 认证** — 安全可靠的用户认证系统
+- **前后台分离** - Vue 3 前端 + Express 后端 API，分层架构清晰
+- **Markdown 编辑** - 支持 Markdown 编写文章，配合实时预览
+- **评论系统** - 支持游客评论和回复，管理员可审核管理
+- **邮件订阅** - 用户可订阅博客更新，新文章发布时自动通知
+- **友链管理** - 开放的友链申请系统，自助提交审核
+- **数据统计** - 管理员后台实时查看网站数据
+- **响应式设计** - 适配各种设备屏幕
+- **JWT 认证** - 安全可靠的用户认证系统
 
 ## 为什么会有这个项目
 
 开发 Lboke 的初心很简单：做一个简洁优雅的个人博客系统，让每个人都能轻松拥有自己的博客。
 
-- **降低门槛** — 将复杂的配置转化为简单的桌面交互
-- **开箱即用** — 数据库、API、前端一站式部署
-- **持续更新** — 功能不断完善，体验持续优化
+- **降低门槛** - 将复杂的配置转化为简单的桌面交互
+- **开箱即用** - 数据库、API、前端一站式部署
+- **持续更新** - 功能不断完善，体验持续优化
 
 ## 快速上手
 
@@ -95,7 +75,7 @@ npm install
 
 创建 `houduan/.env` 文件：
 
-```env
+```
 PORT=3000
 DB_HOST=localhost
 DB_PORT=3306
@@ -118,7 +98,7 @@ cd frontend
 npm run dev
 ```
 
-> 💡 打开浏览器访问 http://localhost:5173 即可看到博客首页，管理后台：http://localhost:5173/admin
+> 打开浏览器访问 http://localhost:5173 即可看到博客首页，管理后台：http://localhost:5173/admin
 
 ## 项目结构
 
@@ -160,30 +140,30 @@ Lboke/
 ## 架构设计
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                          Lboke                               │
-│                                                              │
-│   ┌──────────────────┐         ┌──────────────────────┐    │
-│   │   Browser        │         │   Server             │    │
-│   │   (Vue 3)        │  HTTP   │   (Express)          │    │
-│   │                  │◄───────►│                      │    │
-│   │  ┌────────────┐  │  JSON   │  ┌────────────────┐  │    │
-│   │  │ Vue Router │  │         │  │ RESTful API    │  │    │
-│   │  │ Pinia      │  │         │  │ JWT Auth       │  │    │
-│   │  │ Components │  │         │  │ Routes         │  │    │
-│   │  └────────────┘  │         │  └───────┬────────┘  │    │
-│   │                   │         │          │           │    │
-│   └──────────────────┘         │  ┌───────▼────────┐  │    │
-│                                │  │   MySQL DB     │  │    │
-│                                │  └────────────────┘  │    │
-│                                └──────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
++-------------------------------------------------------------+
+|                          Lboke                               |
+|                                                              |
+|   +--------------------+         +----------------------+    |
+|   |   Browser          |         |   Server             |    |
+|   |   (Vue 3)          |  HTTP   |   (Express)          |    |
+|   |                    |<------->|                      |    |
+|   |  +-------------+  |  JSON   |  +----------------+  |    |
+|   |  | Vue Router  |  |         |  | RESTful API     |  |    |
+|   |  | Pinia       |  |         |  | JWT Auth        |  |    |
+|   |  | Components  |  |         |  | Routes          |  |    |
+|   |  +-------------+  |         |  +----+--------+---+  |    |
+|   |                   |         |          |              |    |
+|   +--------------------+         |  +------v----------+  |    |
+|                                  |  |   MySQL DB       |  |    |
+|                                  |  +------------------+  |    |
+|                                  +----------------------+    |
++-------------------------------------------------------------+
 ```
 
 ## 常见问题
 
 **Q: 如何修改网站名称和描述？**
-A: 登录管理后台 → 网站设置，即可修改。
+A: 登录管理后台 > 网站设置，即可修改。
 
 **Q: 如何备份数据库？**
 A: 使用 mysqldump 命令：
