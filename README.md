@@ -1,7 +1,7 @@
 <br />
 <div align="center">
 
-  <img src="website/e7492461651df697fb9ed118b7bf72c9.png" alt="Lboke Logo" width="128" height="128">
+  <img src="database/e7492461651df697fb9ed118b7bf72c9.png" alt="Lboke Logo" width="128" height="128">
 
   <h1 align="center" style="margin-top: 0.2em;">Lboke</h1>
 
